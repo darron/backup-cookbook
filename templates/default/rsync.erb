@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+RSYNC_COMMAND="rsync -avz --delete"
+BACKUP_SERVER_FOLDER=<%= node.name %>
+$RSYNC_COMMAND /etc <%= node.rsync_username %>@<%= node.rsync_destination %>:/<%= node.rsync_path %>/$BACKUP_SERVER_FOLDER
+$RSYNC_COMMAND /usr/local/sbin <%= node.rsync_username %>@<%= node.rsync_destination %>:/<%= node.rsync_path %>/$BACKUP_SERVER_FOLDER
+$RSYNC_COMMAND /root <%= node.rsync_username %>@<%= node.rsync_destination %>:/<%= node.rsync_path %>/$BACKUP_SERVER_FOLDER
+$RSYNC_COMMAND /home <%= node.rsync_username %>@<%= node.rsync_destination %>:/<%= node.rsync_path %>/$BACKUP_SERVER_FOLDER
+if [ -d "/var/www" ]; then
+        $RSYNC_COMMAND /var/www <%= node.rsync_username %>@<%= node.rsync_destination %>:/<%= node.rsync_path %>/$BACKUP_SERVER_FOLDER
+fi
+if [ -d "/srv/backup" ]; then
+        $RSYNC_COMMAND /srv/backup <%= node.rsync_username %>@<%= node.rsync_destination %>:/<%= node.rsync_path %>/$BACKUP_SERVER_FOLDER
+fi
+if [ -d "/var/lib/mysql" ]; then
+        $RSYNC_COMMAND /var/lib/mysql <%= node.rsync_username %>@<%= node.rsync_destination %>:/<%= node.rsync_path %>/$BACKUP_SERVER_FOLDER
+fi

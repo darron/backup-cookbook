@@ -18,4 +18,6 @@
 # limitations under the License.
 #
 
-# Set meaningful node attributes here
+default['rsync_username'] = 'username'
+default['rsync_destination'] = 'domain.name.goes.here'
+default['rsync_path'] = '/home/backup/location'

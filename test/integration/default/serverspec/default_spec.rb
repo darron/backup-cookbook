@@ -10,4 +10,8 @@ describe 'backup::default' do
   describe file('/root/.ssh/id_dsa') do
     it { should be_file }
   end
+
+  describe file('/usr/local/sbin/rsync.sh') do
+    it { should be_file }
+  end
 end

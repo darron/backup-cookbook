@@ -8,4 +8,8 @@ describe 'backup::default' do
   it 'installs rsync' do
     expect(chef_run).to install_package('rsync')
   end
+
+  it 'creates a the rsync script' do
+    expect(chef_run).to create_template('/usr/local/sbin/rsync.sh')
+  end
 end

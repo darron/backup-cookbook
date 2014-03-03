@@ -28,3 +28,11 @@ bash 'create root ssh key' do
   EOH
   not_if { File.exists?('/root/.ssh/id_dsa') }
 end
+
+template '/usr/local/sbin/rsync.sh' do
+  source 'rsync.erb'
+  action :create
+  user 'root'
+  group 'root'
+  mode '0750'
+end

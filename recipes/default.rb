@@ -18,4 +18,13 @@
 # limitations under the License.
 #
 
-# Install/configure something here
+package 'rsync'
+
+bash 'create root ssh key' do
+  user 'root'
+  cwd '/tmp'
+  code <<-EOH
+    ssh-keygen -N '' -q -t dsa -f /root/.ssh/id_dsa
+  EOH
+  not_if { File.exists?('/root/.ssh/id_dsa') }
+end

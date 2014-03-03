@@ -11,7 +11,7 @@ describe 'backup::default' do
     it { should be_file }
   end
 
-  describe file('/usr/local/sbin/rsync.sh') do
+  describe file('/etc/cron.daily/rsync-backup') do
     it { should be_file }
   end
 end

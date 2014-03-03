@@ -10,6 +10,6 @@ describe 'backup::default' do
   end
 
   it 'creates a the rsync script' do
-    expect(chef_run).to create_template('/usr/local/sbin/rsync.sh')
+    expect(chef_run).to create_template('/etc/cron.daily/rsync-backup')
   end
 end

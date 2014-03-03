@@ -25,11 +25,12 @@ bash 'create root ssh key' do
   cwd '/tmp'
   code <<-EOH
     ssh-keygen -N '' -q -t dsa -f /root/.ssh/id_dsa
+    cat /root/.ssh/id_dsa.pub
   EOH
   not_if { File.exists?('/root/.ssh/id_dsa') }
 end
 
-template '/usr/local/sbin/rsync.sh' do
+template '/etc/cron.daily/rsync-backup' do
   source 'rsync.erb'
   action :create
   user 'root'
